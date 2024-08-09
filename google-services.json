@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "632684600932",
+    "firebase_url": "https://longevity-hub-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "longevity-hub",
+    "storage_bucket": "longevity-hub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632684600932:android:21059fba6c6c82fa8e0971",
+        "android_client_info": {
+          "package_name": "com.riayatech.longevityhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632684600932-2fpfo73t76ho874pvouqhr6am2n4iss0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.riayatech.longevityhub",
+            "certificate_hash": "adfece528f0d6287f035afbd30d49ed2a4292dd6"
+          }
+        },
+        {
+          "client_id": "632684600932-k0l2c6dq7sg889qg64u85hub4o1g2ius.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.riayatech.longevityhub",
+            "certificate_hash": "1c76519e158ccadc752ef9a90195b94d0c005da6"
+          }
+        },
+        {
+          "client_id": "632684600932-ug11qidebkm1pqcmfh2iftn4rsdk49i9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.riayatech.longevityhub",
+            "certificate_hash": "392410a5e917abe3cc8fbba93ef1678cc79ef019"
+          }
+        },
+        {
+          "client_id": "632684600932-6sm8p3s2tru9bd7c4sospk4gb38i75p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOkOzHJPWzLhM0pK3NCV7YHw7LRx8ErsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632684600932-6sm8p3s2tru9bd7c4sospk4gb38i75p9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "632684600932-mq83svpic66ld4sdp9ftrt4kn0r4gdti.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.riayatech.longevityhub"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

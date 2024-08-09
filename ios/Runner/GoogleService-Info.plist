@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>632684600932-mq83svpic66ld4sdp9ftrt4kn0r4gdti.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.632684600932-mq83svpic66ld4sdp9ftrt4kn0r4gdti</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBt9BJOmmz_827Mf0Jjoc7ZwWbNROGkIQ0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>632684600932</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.riayatech.longevityhub</string>
+	<key>PROJECT_ID</key>
+	<string>longevity-hub</string>
+	<key>STORAGE_BUCKET</key>
+	<string>longevity-hub.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:632684600932:ios:f5edcdd469e922e68e0971</string>
+	<key>NSHealthShareUsageDescription</key>
+<string>We will sync your data with the Apple Health app to give you better insights</string>
+<key>NSHealthUpdateUsageDescription</key>
+<string>We will sync your data with the Apple Health app to give you better insights</string>
+</dict>
+</plist>

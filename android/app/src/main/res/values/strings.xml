@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Longevity Hub</string>
+    <string name="facebook_app_id">1019356209718675</string>
+    <string name="fb_login_protocol_scheme">fb1019356209718675</string>
+    <string name="facebook_client_token">ca62506b9b6498f42706af1743eabcb7</string>
+</resources>
