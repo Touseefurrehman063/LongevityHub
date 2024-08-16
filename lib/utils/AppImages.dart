@@ -230,4 +230,5 @@ class AppImages {
   static String leftIcon = "assets/images/leftIcon.png";
   static String changePassword = "assets/images/changePassword.png";
   static String upcomingEventPerson = 'assets/images/upcomingEventPerson.png';
+  static String twoFacesReview = "assets/images/twoFacesReview.png";
 }

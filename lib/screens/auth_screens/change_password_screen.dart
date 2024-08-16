@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,8 +43,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   void initState() {
     AuthController.i.oldpasscontroller.clear();
-    AuthController.i.newpasscontroller.clear();
-    AuthController.i.confirmnewpasscontroller.clear();
+    AuthController.i.changeNewpasscontroller.clear();
+    AuthController.i.changeConfirmnewpasscontroller.clear();
 
     super.initState();
   }
@@ -120,6 +121,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         }
                         return null;
                       },
+                      obscureText: AuthController.i.oldObsecure,
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            AuthController.i.updateOldobsecurepassword(
+                                !AuthController.i.oldObsecure);
+                          },
+                          child: AuthController.i.oldObsecure
+                              ? const Icon(
+                                  CupertinoIcons.eye_slash,
+                                  color: ColorManager.kPrimaryDarkGreenColor,
+                                )
+                              : const Icon(CupertinoIcons.eye,
+                                  color: ColorManager.kPrimaryDarkGreenColor)),
                       controller: AuthController.i.oldpasscontroller,
                       hintText: 'enteroldPass'.tr,
                     );
@@ -164,20 +178,20 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         }
                         return null; // Return null if password meets all requirements
                       },
-                      // obscureText: AuthController.i.obsecure,
-                      // suffixIcon: InkWell(
-                      //     onTap: () {
-                      //       AuthController.i.updateobsecurepassword(
-                      //           !AuthController.i.obsecure);
-                      //     },
-                      //     child: AuthController.i.obsecure
-                      //         ? const Icon(
-                      //             CupertinoIcons.eye_slash,
-                      //             color: ColorManager.kPrimaryDarkGreenColor,
-                      //           )
-                      //         : const Icon(CupertinoIcons.eye,
-                      //             color: ColorManager.kPrimaryDarkGreenColor)),
-                      controller: AuthController.i.newpasscontroller,
+                      obscureText: AuthController.i.obsecure,
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            AuthController.i.updateobsecurepassword(
+                                !AuthController.i.obsecure);
+                          },
+                          child: AuthController.i.obsecure
+                              ? const Icon(
+                                  CupertinoIcons.eye_slash,
+                                  color: ColorManager.kPrimaryDarkGreenColor,
+                                )
+                              : const Icon(CupertinoIcons.eye,
+                                  color: ColorManager.kPrimaryDarkGreenColor)),
+                      controller: AuthController.i.changeNewpasscontroller,
                       hintText: 'newPass'.tr,
                     );
                   }),
@@ -209,20 +223,21 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         }
                         return null;
                       },
-                      // obscureText: AuthController.i.obsecure1,
-                      // suffixIcon: InkWell(
-                      //     onTap: () {
-                      //       AuthController.i.updateobsecurepassword1(
-                      //           !AuthController.i.obsecure1);
-                      //     },
-                      //     child: AuthController.i.obsecure1
-                      //         ? const Icon(
-                      //             CupertinoIcons.eye_slash,
-                      //             color: ColorManager.kPrimaryDarkGreenColor,
-                      //           )
-                      //         : const Icon(CupertinoIcons.eye,
-                      //             color: ColorManager.kPrimaryDarkGreenColor)),
-                      controller: AuthController.i.confirmnewpasscontroller,
+                      obscureText: AuthController.i.obsecure1,
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            AuthController.i.updateobsecurepassword1(
+                                !AuthController.i.obsecure1);
+                          },
+                          child: AuthController.i.obsecure1
+                              ? const Icon(
+                                  CupertinoIcons.eye_slash,
+                                  color: ColorManager.kPrimaryDarkGreenColor,
+                                )
+                              : const Icon(CupertinoIcons.eye,
+                                  color: ColorManager.kPrimaryDarkGreenColor)),
+                      controller:
+                          AuthController.i.changeConfirmnewpasscontroller,
                       hintText: 'confirmnewPass'.tr,
                     );
                   }),
@@ -237,7 +252,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       onPress: () {
                         if (_formKey.currentState!.validate()) {
                           _startLoading();
-                          AuthRepository().resetForgetPassword().then((value) {
+                          AuthRepository().changePassword().then((value) {
                             _stopLoading();
                             // Handle success
                           }).catchError((error) {

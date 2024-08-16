@@ -51,6 +51,7 @@ class ColorManager {
   static const Color kGreenLight = Color(0xffc5f6e2);
   static const Color kMaroonContainerColor = Color(0xff673ab7);
   static const Color kSonicSilverColor = Color(0xFF7C7C7C);
+  static const Color kRomanSilverColor = Color(0xFF838A93);
 
   static const Gradient lightBlueGradient = LinearGradient(
     colors: [kLightBlueGradientStart, kLightBlueGradientEnd],

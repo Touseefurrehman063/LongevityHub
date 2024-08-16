@@ -41,6 +41,12 @@ class AuthController extends GetxController implements GetxService {
     update();
   }
 
+  String? branchId;
+
+  void setBranchId(String? id) {
+    branchId = id;
+  }
+
   late bool isfeetSelected;
   late bool isKgSelected;
   void toggleWeightUnit() {
@@ -71,6 +77,9 @@ class AuthController extends GetxController implements GetxService {
   TextEditingController activitylevelcont = TextEditingController();
   TextEditingController newpasscontroller = TextEditingController();
   TextEditingController confirmnewpasscontroller = TextEditingController();
+  TextEditingController changeNewpasscontroller = TextEditingController();
+  TextEditingController changeConfirmnewpasscontroller =
+      TextEditingController();
   TextEditingController oldpasscontroller = TextEditingController();
   String? diseasesid;
   void updateDiseaseId(String diseaseId) {
@@ -161,6 +170,7 @@ class AuthController extends GetxController implements GetxService {
   bool _isotpLoading = false;
   bool get isotpLoading => _isotpLoading;
   bool obsecure = true;
+  bool oldObsecure = true;
   bool obsecure1 = true;
   bool obsecure2 = true;
   bool obsecure3 = true;
@@ -171,6 +181,11 @@ class AuthController extends GetxController implements GetxService {
   bool oldpassword = true;
   bool newpassword = true;
   bool newconfirmpassword = true;
+
+  updateOldobsecurepassword(bool ob) {
+    oldObsecure = !oldObsecure;
+    update();
+  }
 
   updateobsecurepassword(bool ob) {
     obsecure = !obsecure;

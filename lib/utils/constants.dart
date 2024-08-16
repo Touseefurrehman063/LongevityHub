@@ -35,6 +35,8 @@ class AppConstants {
   static String otpverification = '$baseURL/api/Longivity/OTPVerification';
   static String resetforgetpassword =
       '$baseURL/api/Longivity/ResetForgetPassword';
+  static String changePassword = '$baseURL/api/Longivity/ChangePassword';
+
   static String updatePackageSubscriptionPlan =
       '$baseURL/api/Longivity/UpdatePackageSubscriptionPlan';
   static String getPackageSubscriptionPlan =

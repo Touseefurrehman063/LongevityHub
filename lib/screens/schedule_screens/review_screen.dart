@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity_hub/components/custom_button.dart';
 import 'package:longevity_hub/components/custom_review_card/custom_review_card.dart';
 import 'package:longevity_hub/helpers/color_manager.dart';
-import 'package:longevity_hub/screens/schedule_screens/write_review_screen.dart';
+import 'package:longevity_hub/screens/schedule_screens/write_expert_review_screen.dart';
 import 'package:longevity_hub/utils/AppImages.dart';
 
 class ReviewsScreen extends StatefulWidget {
@@ -197,7 +197,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                 backgroundColor: ColorManager.kPrimaryColor,
                 buttonwidth: Get.width * 0.75,
                 onPress: () {
-                  Get.to(() => const WriteReviewsScreen());
+                  Get.to(() => const WriteExpertReviewScreen());
                 },
                 mywidget: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

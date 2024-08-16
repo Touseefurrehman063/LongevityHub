@@ -39,6 +39,7 @@ class HealthInsightsController extends GetxController implements GetxService {
   double distance = 0.0;
   int calories = 0;
   int heartRate = 0;
+  int newheartRate = 0;
   int goal = 0;
 
   bool isLoading = true;
@@ -63,6 +64,8 @@ class HealthInsightsController extends GetxController implements GetxService {
   void onClose() {
     updateTimer?.cancel();
     resetTimer?.cancel();
+    _stepCountStream.drain();
+    _pedestrianStatusStream.drain();
     super.onClose();
   }
 

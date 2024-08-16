@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:longevity_hub/components/Profile/custom_popup.dart';
 import 'package:longevity_hub/data/controller/auth_controller.dart';
 import 'package:longevity_hub/data/localDB/local_db.dart';
+import 'package:longevity_hub/models/forget_email_verification_model/change_pass_model.dart';
 import 'package:longevity_hub/models/forget_email_verification_model/forget_email_verification_model.dart';
 import 'package:longevity_hub/models/forget_email_verification_model/otp_verification_model.dart';
 import 'package:longevity_hub/models/forget_email_verification_model/reset_forget_pass_model.dart';
@@ -17,6 +18,7 @@ import 'package:longevity_hub/models/user_model/user_model.dart';
 import 'package:longevity_hub/repositories/login_repository/login_repo.dart';
 import 'package:longevity_hub/screens/auth_screens/create_newpassword.dart';
 import 'package:longevity_hub/screens/auth_screens/login.dart';
+import 'package:longevity_hub/screens/auth_screens/old_pass_success.dart';
 import 'package:longevity_hub/screens/auth_screens/otp_screen.dart';
 import 'package:longevity_hub/screens/auth_screens/password_success.dart';
 import 'package:longevity_hub/screens/dashboard_screens/menu_drawer.dart';
@@ -517,6 +519,41 @@ class AuthRepository {
     }
   }
 
+  changePassword() async {
+    String? userId = await LocalDb().getUserid();
+    var body = {
+      "Id": userId,
+      "BranchId": AuthController.i.branchId ?? "",
+      "OldPassword": AuthController.i.oldpasscontroller.text,
+      "Password": AuthController.i.changeNewpasscontroller.text,
+    };
+
+    var headers = {
+      'Content-Type': 'application/json',
+    };
+    try {
+      var response = await http.post(Uri.parse(AppConstants.changePassword),
+          body: jsonEncode(body), headers: headers);
+      if (response.statusCode == 200) {
+        var result = jsonDecode(response.body);
+        ChangePasswordModel responseData = ChangePasswordModel.fromJson(result);
+        if (responseData.status != null && responseData.status! >= 1) {
+          AuthController.i.updateisLoading(false);
+
+          logout();
+          log(responseData.toJson().toString());
+          return responseData;
+        } else {
+          CustomPopup.showError(responseData.error.toString());
+          AuthController.i.updateisLoading(false);
+        }
+      }
+    } catch (e) {
+      // ToastManager.showToast(e.toString());
+      AuthController.i.updateisLoading(false);
+    }
+  }
+
   loginApi() async {
     AuthController.i.updateisLoading(true);
     try {
@@ -578,6 +615,7 @@ class AuthRepository {
       var uname = response['FirstName'];
       var accesstoken = response['AccessToken'];
       var token = response['Token'];
+      var branchId = response['BranchId'];
       print("Login response status: $status");
       if (status < 1) {
         CustomPopup.showError(errorMsg.toString());
@@ -586,6 +624,7 @@ class AuthRepository {
         LocalDb().saveUserid(id);
         LocalDb().saveUsername(uname);
         LocalDb().saveAccessToken(accesstoken);
+        AuthController.i.setBranchId(branchId);
         LocalDb().saveUserToken(accesstoken);
         await Get.offAll(() => const DrawerScreen());
       }

@@ -1,12 +1,10 @@
-import 'dart:developer';
+// ignore_for_file: unused_element, deprecated_member_use
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity_hub/components/health_insights/custom_heart_bmp_containe.dart';
-import 'package:longevity_hub/data/controller/ble_controller/ble_conroller.dart';
 import 'package:longevity_hub/data/controller/health_insights_controller/health_insights_controller.dart';
 import 'package:longevity_hub/helpers/color_manager.dart';
 import 'package:longevity_hub/screens/health_insights_screens/heart_rate_history_screen.dart';
@@ -24,44 +22,6 @@ class _HeartRateScreenState extends State<HeartRateScreen> {
   final double _maxRating = 5.0;
   final double value = 6.2;
   final double maxRating = 5.0;
-  void _connectToDevice(BluetoothDevice device) async {
-    log("Connecting to ${device.remoteId}");
-    try {
-      await device.connect();
-      BleController.i.setDeviceConnectionState(device, true);
-
-      await Future.delayed(const Duration(seconds: 2));
-
-      if (device.isConnected) {
-        List<BluetoothService> services = await device.discoverServices();
-        for (var service in services) {
-          log('Service UUID: ${service.uuid}');
-          if (service.uuid.toString() ==
-              '0000180d-0000-1000-8000-00805f9b34fb') {
-            for (var characteristic in service.characteristics) {
-              if (characteristic.uuid.toString() ==
-                  '00002a37-0000-1000-8000-00805f9b34fb') {
-                // Subscribe to heart rate characteristic
-                await characteristic.setNotifyValue(true);
-                characteristic.value.listen((value) {
-                  // Heart rate value is typically in the first byte
-                  int heartRate = value[1];
-                  log('Heart rate: $heartRate bpm');
-                  // Update your UI with the heart rate value
-                  BleController.i.updateHeartRate(
-                      heartRate); // Implement this in your BleController
-                });
-              }
-            }
-          }
-        }
-      } else {
-        log('Device is not connected, cannot discover services.');
-      }
-    } catch (e) {
-      log('Error connecting to device: $e');
-    }
-  }
 
   @override
   void initState() {

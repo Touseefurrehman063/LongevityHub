@@ -10,8 +10,8 @@ import 'package:longevity_hub/components/health_insights/heart_container.dart';
 import 'package:longevity_hub/data/controller/health_insights_controller/health_insights_controller.dart';
 import 'package:longevity_hub/helpers/color_manager.dart';
 import 'package:longevity_hub/screens/dashboard_screens/menu_drawer.dart';
+import 'package:longevity_hub/screens/health_insights_screens/ble_device_data_screen.dart';
 import 'package:longevity_hub/screens/health_insights_screens/earn_rewards.dart';
-import 'package:longevity_hub/screens/health_insights_screens/healthy_sleep_screen.dart';
 import 'package:longevity_hub/screens/health_insights_screens/heart_rate_screen.dart';
 import 'package:longevity_hub/screens/health_insights_screens/scan_screen.dart';
 import 'package:longevity_hub/screens/health_insights_screens/set_move_goal_screen.dart';
@@ -370,7 +370,8 @@ class _HealthInsightsScreenState extends State<HealthInsightsScreen>
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => const HealthySleepScreen());
+                        // Get.to(() => const HealthySleepScreen());
+                        Get.to(() => const BLEDeviceDataScreen());
                       },
                       child: SleepContainer(
                         imagePath: AppImages.sleeping,
